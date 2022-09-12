@@ -50,6 +50,19 @@ void BubbleSort(int vetor[])
     }
 }
 
+void SequencialSearch(int vetor[], int value)
+{
+    int i, k = value, count=10;
+
+    for (i = 0; i < count; i++)
+    {
+        if(vetor[i] == k)
+        {
+            std::cout << "O valor esta no vetor!";
+        }
+    }
+}
+
 
 
 
@@ -58,6 +71,8 @@ int main(int argc, char const *argv[])
     int vetor[10] = {1,5,6,9,8,2,3,10,4,7};
     //SelectionSort(vetor);
     BubbleSort(vetor);
+
+    SequencialSearch(vetor, 7);
 
     
     return 0;
