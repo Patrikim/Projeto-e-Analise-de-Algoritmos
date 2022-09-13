@@ -3,6 +3,7 @@
 #include <vector>
 #include <array>
 #include <cmath>
+#include <algorithm>
 
 
 void SelectionSort(int vetor[])
@@ -89,16 +90,23 @@ void BruteForceStringMatch(char text[], char pattern[])
 
 void BruteForceClosestPair(std::vector<std::vector<int>> pontos)
 {
-    int d = 9999999999, i, j;
+    float d = 9999;
+    int i, j;
 
     for (i = 0; i < pontos.size() - 1; i++)
     {
         for (j = 0; j < i+1; j++)
         {
-            float k1 = std::pow((pontos[i][j] - pontos[i+1][j]), 2);
-            float k2 = std::pow((pontos[i+1][j+1] - pontos[i+2][j+1]), 2);
+            //std::cout << "ola mundo";
+            //std::cout << pontos[0][0] << pontos[1][0] << pontos[0][1] << pontos[1][1];
+            float k1 = std::pow((pontos[0][0] - pontos[1][0]), 2);
+            float k2 = std::pow((pontos[0][1] - pontos[1][1]), 2);
             float k3 = k1 + k2;
-            std::cout << k3;
+            float k4 = std::sqrt(k3);
+            //std::cout << k3;
+            //std::cout << k4;
+            d = std::min(d, k4);
+            std::cout << d;
         }
         
     }
