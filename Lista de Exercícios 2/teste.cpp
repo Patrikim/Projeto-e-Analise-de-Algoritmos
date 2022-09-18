@@ -5,8 +5,7 @@
 #include <cmath>
 #include <algorithm>
 
-
-void SelectionSort(int vetor[])
+void selectionSort(int vetor[])
 {
     int i , j ,aux , min, count=10;
 
@@ -31,7 +30,7 @@ void SelectionSort(int vetor[])
    } 
 }
 
-void BubbleSort(int vetor[])
+void bubbleSort(int vetor[])
 {
     int i, j, aux, count = 10;
 
@@ -55,7 +54,7 @@ void BubbleSort(int vetor[])
     }
 }
 
-void SequencialSearch(int vetor[], int value)
+void sequencialSearch(int vetor[], int value)
 {
     int i, k = value, count=10;
 
@@ -68,7 +67,7 @@ void SequencialSearch(int vetor[], int value)
     }
 }
 
-void BruteForceStringMatch(char text[], char pattern[])
+void bruteForceStringMatch(char text[], char pattern[])
 {
     int n = strlen(text);
     int m = strlen(pattern);
@@ -88,19 +87,49 @@ void BruteForceStringMatch(char text[], char pattern[])
     }
 }
 
-void BruteForceClosestPair(std::vector<std::vector<int>> pontos)
+template<typename T> void bruteForceClosestPair(std::vector<std::vector<T>> pontos)
+{
+
+    float d = 99999;
+
+
+    for (size_t i = 0; i < pontos.size() - 1; i++)
+    {
+        for (size_t j = i+1; j < pontos.size(); j++)
+        {
+            //std::cout << "ola mundo";
+            //std::cout << pontos[i][0] << pontos[i+1][0] << pontos[i][1] << pontos[i+1][1];
+            float k1 = std::pow((pontos[i][0] - pontos[j][0]), 2);
+            float k2 = std::pow((pontos[i][1] - pontos[j][1]), 2);
+            float k3 = k1 + k2;
+            float k4 = std::sqrt(k3);
+            //std::cout << k3;
+            //std::cout << k4;
+
+
+            std::cout << i << " " << j << std::endl;
+            d = std::min(d, k4);
+            std::cout<< i << " iteracao: " << k4 << std::endl;
+        }
+    }
+}
+
+
+
+
+void bruteForceClosestPair1(std::vector<std::vector<int>> pontos)
 {
     float d = 9999;
     int i, j;
 
     for (i = 0; i < pontos.size() - 1; i++)
     {
-        for (j = 0; j < i+1; j++)
+        for (j = 0; j < 1; j++)
         {
             //std::cout << "ola mundo";
-            //std::cout << pontos[0][0] << pontos[1][0] << pontos[0][1] << pontos[1][1];
-            float k1 = std::pow((pontos[0][0] - pontos[1][0]), 2);
-            float k2 = std::pow((pontos[0][1] - pontos[1][1]), 2);
+            std::cout << pontos[i][0] << pontos[i+1][0] << pontos[i][1] << pontos[i+1][1];
+            float k1 = std::pow((pontos[i][0] - pontos[i+1][0]), 2);
+            float k2 = std::pow((pontos[i][1] - pontos[i+1][1]), 2);
             float k3 = k1 + k2;
             float k4 = std::sqrt(k3);
             //std::cout << k3;
@@ -112,16 +141,19 @@ void BruteForceClosestPair(std::vector<std::vector<int>> pontos)
     }
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
-    int vetor[10] = {1,5,6,9,8,2,3,10,4,7};
+    //int vetor[10] = {1,5,6,9,8,2,3,10,4,7};
 
-    char text[] = "dwafggwkgwqghellewqeasdwhellodwd";
-    char pattern[] = "hello";
+    //char text[] = "dwafggwkgwqghellewqeasdwhellodwd";
+    //char pattern[] = "hello";
 
-    std::vector<std::vector<int>> pontos{{1, 3}, {4, 1}}; 
+    std::vector<std::vector<float>> pontos{{1.2, 3}, {4, 1}, {1, 2}, {2,6} , {6,9}, {2,1}}; 
 
-    BruteForceClosestPair(pontos);
+
+    bruteForceClosestPair(pontos);
+
+    //bruteForceClosestPair(pontos);
 
     //for (int i = 0; i < pontos.size(); i++) {
     //    for (int j = 0; j < pontos[i].size(); j++)
@@ -129,11 +161,9 @@ int main(int argc, char const *argv[])
     //    std::cout << std::endl;
     //}
     
-    //SelectionSort(vetor);
-    //BubbleSort(vetor);
-    //SequencialSearch(vetor, 11);
-    //BruteForceStringMatch(text, pattern);
-
-    
+    //selectionSort(vetor);
+    //bubbleSort(vetor);
+    //sequencialSearch(vetor, 11);
+    //bruteForceStringMatch(text, pattern);
     return 0;
 }
