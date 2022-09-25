@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
-
+//Variáveis globais para o algoritmo de Johnson-Trotter
+bool LEFT_TO_RIGHT = true;
+bool RIGHT_TO_LEFT = false;
 
 
 template<typename T> void insertionSort(std::vector<T> &v)
@@ -13,7 +16,6 @@ template<typename T> void insertionSort(std::vector<T> &v)
         k = v[i];
         j = i-1;
 
-
         while (j>=0 && v[j] > k)
         {
             v[j+1] = v[j];
@@ -24,16 +26,123 @@ template<typename T> void insertionSort(std::vector<T> &v)
 }
 
 
+//Algoritmo de Johnson-Trotter
+int fatorial(int n)
+{
+    return std::tgamma(n+1);
+}
+int searchArr(std::vector<int> &p, int n, int mobile)
+{
+    for (size_t i = 0; i < n; i++)
+        if (p.at(i) == mobile)
+           return i + 1;
+}
+int getMobile(std::vector<int> &p, std::vector<bool> &dir, int n)
+{
+    int mobileprev = 0, mobile = 0;
+    
+    for (int i = 0; i < n; i++)
+    {
+        // direction 0 represents RIGHT TO LEFT.
+        if (dir[p[i]-1] == RIGHT_TO_LEFT && i!=0)
+        {
+            if (p[i] > p[i-1] && p[i] > mobileprev)
+            {
+                mobile = p[i];
+                mobileprev = mobile;
+            }
+        }
+  
+        // direction 1 represents LEFT TO RIGHT.
+        if (dir[p[i]-1] == LEFT_TO_RIGHT && i!=n-1)
+        {
+            if (p[i] > p[i+1] && p[i] > mobileprev)
+            {
+                mobile = p[i];
+                mobileprev = mobile;
+            }
+        }
+    }
+
+    if (mobile == 0 && mobileprev == 0)
+        return 0;
+    else
+        return mobile;
+}
+int permutation(std::vector<int> &p, std::vector<bool> &dir, int n)
+{
+    int mobile = getMobile(p, dir, n);
+    int pos = searchArr(p, n, mobile);
+
+
+    if (dir[p[pos - 1] - 1] ==  RIGHT_TO_LEFT)
+    {
+       std::swap(p[pos-1], p[pos-2]);
+    }
+  
+    else if (dir[p[pos - 1] - 1] == LEFT_TO_RIGHT)
+    {
+       std::swap(p[pos], p[pos-1]);
+    }
+  
+    for (size_t i = 0; i < n; i++)
+    {
+        if (p[i] > mobile)
+        {
+            if (dir[p[i] - 1] == LEFT_TO_RIGHT)
+            {
+                dir[p[i] - 1] = RIGHT_TO_LEFT;
+            }
+            else if (dir[p[i] - 1] == RIGHT_TO_LEFT)
+            {  
+                dir[p[i] - 1] = LEFT_TO_RIGHT;
+            }
+        }
+    }
+  
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << p[i];
+    }
+    std::cout << std::endl;
+
+} 
+void permutations(int n)
+{
+    std::vector<int> p;
+    std::vector<bool> dir;
+
+    for (size_t i = 0; i < n; i++)
+    {
+        p.push_back(i+1);
+        std::cout << p[i];
+    }
+    std::cout << std::endl ;
+
+    for (size_t i = 0; i < n; i++)
+    {
+        dir.push_back(RIGHT_TO_LEFT);
+    }
+
+    for (size_t i = 1; i < fatorial(n); i++)
+    {
+        permutation(p, dir, n);
+    }
+
+}
+
 int main(int argc, char const *argv[])
 {
-    std::vector<int> v = {2, 5, 9, 1, 4, 7, 6, 3, 0, 12, 10, 20, 15, 13};
-    
+    //std::vector<int> v = {2, 5, 9, 1, 4, 7, 6, 3, 0, 12, 10, 20, 15, 13};
     //insertionSort(v);
+    //for (size_t i = 0; i < v.size(); i++)
+    //{
+    //    std::cout << v[i] << std::endl;
+    //}
 
-    for (size_t i = 0; i < v.size(); i++)
-    {
-        std::cout << v[i] << std::endl;
-    }
+
+    int n = 4;
+    permutations(n);
     
     return 0;
 }
