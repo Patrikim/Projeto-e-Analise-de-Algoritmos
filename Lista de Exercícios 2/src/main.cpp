@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 class Busca
@@ -60,6 +61,51 @@ class Busca
                 }         
             }
         }
+
+        void generatePermutations(int n, std::vector<int> solution)
+        {
+            if(solution.size() == n)
+            {
+                for (size_t i = 0; i < solution.size(); i++)
+                {
+                    std::cout << solution[i];
+                }
+                std::cout << std::endl;
+            }
+            else
+            {
+                for (size_t i = 0; i < n; i++)
+                {
+                    if (std::find(solution.begin(), solution.end(), i) == solution.end())
+                    {
+                        solution.push_back(i);
+                        generatePermutations(n, solution);
+                        solution.pop_back();
+                    }
+                }          
+            }
+        }
+
+        void generateSubgroups(int n, std::vector<int> solution)
+        {
+            for (size_t i = 0; i < n; i++)
+            {
+                if (std::find(solution.begin(), solution.end(), i) == solution.end())
+                {
+                    solution.push_back(i);
+                    for(int i = 0; i < solution.size(); i++)
+                    {
+                        std::cout << solution[i];
+                    }
+                        std::cout << std::endl;
+                        generateSubgroups(n, solution);
+                    solution.pop_back();
+                }      
+            }          
+        }
+
+
+
 };
 
 
@@ -107,8 +153,11 @@ int main(int argc, char const *argv[])
 
 
     Busca B = Busca(listaadj);
-    B.buscaLargura(0);
+    //B.buscaLargura(0);
     //B.buscaProfundidade(0);
+    std::vector<int> solution;
+    //B.generatePermutations(4, solution);
+    B.generateSubgroups(4, solution);
 
 	
     return 0;
