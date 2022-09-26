@@ -131,6 +131,72 @@ void permutations(int n)
 
 }
 
+//Busca binária
+int binarySearch(std::vector<int> v, int k)
+{
+    int min = 0, max = v.size()-1, x;
+
+    while (min <= max)
+    {
+        x = (min + max) / 2;
+        if (k == v.at(x))
+        {
+            return x;
+        }
+        else if(k > v.at(x))
+        {
+            min = x+1;
+        }
+        else
+        {
+            max = x-1;
+        }
+    }
+
+    return -1;
+}
+
+//Interpolation Search
+int interpolationSearch(std::vector<int> v, int k)
+{
+    int min = 0, max = v.size() - 1;
+
+    while(min <= max && k >= v.at(min) && k <= v.at(max))
+    {
+
+        if(min == max)
+        {
+            if(v.at(min) == k)
+            {
+                return min;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        int pos = min + (((double)(max - min) / (v.at(max) - v.at(min))) * (k - v.at(min)));
+
+        //Condição para quanto o valor é encontrado
+        if(v.at(pos) == k)
+        {
+            return pos;
+        }
+
+
+        if(v.at(pos) < k)
+        {
+            min = pos + 1;
+        }
+        else
+        {
+            max = pos - 1;
+        }
+    }
+    return -1;
+}
+
 int main(int argc, char const *argv[])
 {
     //std::vector<int> v = {2, 5, 9, 1, 4, 7, 6, 3, 0, 12, 10, 20, 15, 13};
@@ -141,8 +207,13 @@ int main(int argc, char const *argv[])
     //}
 
 
-    int n = 4;
-    permutations(n);
+    //int n = 4;
+    //permutations(n);
+
+
+    std::vector<int> v = {0, 2, 3, 5, 7, 8, 10, 15, 18, 22, 24, 26, 30, 35, 36, 39, 45};
+    //std::cout << binarySearch(v, 30);
+    //std::cout << interpolationSearch(v, 18);
     
     return 0;
 }
