@@ -214,6 +214,6 @@ int main(int argc, char const *argv[])
     //std::vector<int> v = {0, 2, 3, 5, 7, 8, 10, 15, 18, 22, 24, 26, 30, 35, 36, 39, 45};
     //std::cout << binarySearch(v, 30);
     //std::cout << interpolationSearch(v, 18);
-    
+    //
     return 0;
 }
