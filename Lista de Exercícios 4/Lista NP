@@ -1,0 +1,17 @@
+1- Um algoritmo é dito ser de tempo polinomial se seu tempo de execução é limitado superiormente por uma expressão polinomial no tamanho da entrada do algoritmo, 
+i.e., T(n) = O(nk) para uma constante k.
+2- Um problema cujo dado numero grande de instâncias ele pode ser resolvido em tempo hábil, e com recursos normais.
+3- Problemas cujo nao existe algoritmos eficientes, sendo assim pra grandes instancias ele demora muito tempo ou consome muito recurso.
+4- Problemas que podem ser resolvidos em tempo polinomial.
+5- Se o problema é limitado superiormente por uma função polinomial.
+6- Decidivel = sempre podemos construir um algoritmo que responda corretamente.
+   Indecidível = Os problemas para os quais não podemos construir um algoritmo que possa responder ao problema corretamente em tempo finito.
+7- Algoritmo determinístico é o que sempre produz o mesmo resultado dadas determinadas entradas de dados, e passando pelos mesmos estados. 
+8- Algoritmo não determinístico é aquele que pode produzir resultados diferentes mesmo com os mesmos dados entrados e passando por estados diferentes.
+9- Na teoria da complexidade computacional, NP é o acrônimo em inglês para Tempo polinomial não determinístico (Non-Deterministic Polynomial time) que denota o conjunto de problemas que são decidíveis em tempo polinomial por uma máquina de Turing não-determinística.
+10- Um algoritmo cujo resultado pode ser obtido por uma maquina de turing nao deterministica.
+11-
+12- Por que se houver solução em tempo polinomial para problemas np esses problemas passariam a ser tratáveis.
+16- Não
+17- A
+18

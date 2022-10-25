@@ -1,0 +1,77 @@
+Profundidade na arvore O(log2N)
+
+*Árvore binária - é uma arvore em que cada nó tem até duas folhas.
+*Árvore - É um grafo acíclico.
+*Árvore de busca binária - É uma arvore binária na qual um valor n é maior que os valores da subarvore a esquerda
+ e menor que os valores da subarvore a direita.
+
+
+7-  Array(com chave hash) = o(1) para busca inserção e remoção, o problema é que para um vetor grande consome muito espaço.
+    Arvore binária = O(log2N) gasta mais tempo para as operações de busca, inserção e remoção. Porém consome menos espaço na memoria.
+8-  a) Fila de prioridade(heap)
+    b) Lista encadeada
+    c) Pilha
+9-  Complexidade de tempo - Numero de operações em função do tamanho da entrada.
+    Complexidade de espaço - Numero de unidades de memoria em função do tamanho da entrada.
+10- Pior caso - Cenário que leva ao maior numero de operações.
+    Melhor caso - Cenário que leva ao menor numero de operações.
+    Médio caso - Valor esperado para todas as entradas.
+11- Por que o tempo de execução depende de fatores externos aos algoritmo, como hardware. Contar o numero de operações pode ser a melhor opção.
+Depende da aplicação, pode acontecer de um algoritmo fazer mais operações e demorar menos tempo.
+12- ps: com subtração se tem a diferença e com divisão quantas vezes a mais.
+    a) log2 4n / log2 n = 2 vezes mais operações.
+    b) sqrt(4n)/ sqrt(n) = 2 vezes mais operações.
+    c) 4n/n = 4 vezes mais operações.
+    d) 4n^2/n^2 
+    e) 4n^3/n^3 = 64
+    f) 2^4n/2^n = 2^3n
+13- a) ((1/3)*(1000^3)) / ((1/3)*(500^3)) = 8
+    b) ((1/3)*(n^3)) / 1000 = ((1/3) * m^3) = (n/m) = 10 ou seja precisou melhorar o computador em 1000 para resolver somente 10 vezes mais equações.
+14- O(limite superior) = Uma função f(n) é dita O(g(n)), f(n) pertence O(g(n)) se F(n) é limitada por Kg(n), k constante, para n grande, isto é, se existe alguma constante 
+positiva K e algum inteiro não negativo n0 de forma que: f(n) <= kg(n), n0 >= 0, k > 0, para todo n >= n0.
+    Ex: 100n+5 pertence a O(n^2) -> 100n+5 <= kn^2, n0 >=0, k > 0, para todo n >= n0
+        100n+5 <= 100n+n = 101n <= 101n^2, n>=5, k=101
+    Omega(limite inferior) = f(n) é Omega(g(n)) se f(n) >= kg(n), para todo n >= n0
+	    n0 >= 0, 
+            k>0, 
+    ex: n^3 pertence a omega(n^2)
+        n^3 >= kn^2
+        k = 1
+        n0 >= 0
+    Theta = f(n) = theta(g(n)) -> k1g(n) <= f(n) <= k2g(n), para todo n >= n0
+	    n0 >= 0
+            k1 > 0
+	    k2 > 0
+
+TEOREMA: ps:não costuma cobrar prova matematica na prova
+	t1(n) <= k1g1(n), para todo n >= n1
+	t2(n) <= k2g2(n), para todo n >= n2
+	t1(n) + t2(n) <= k1g1(n) + k2g2(n), para todo n >= max(n1,n2)
+	nao terminei de copiar o resto
+16- O que é limite 
+    lim n-> infinito f(n)/g(n)
+	| 0:        f(n) pertence O(g(n))
+	| k:        f(n) pertence theta(g(n))
+	| infinito: f(n) pertence omega(g(n))
+ a)(1/2)n(n-1) / (n^2) = 1/2n(n-1) theta
+ b) raiz cresce mais que log (pesquisar)
+ c) fatorial cresce mais que exponencial
+17- 
+ a) verdadeiro
+ b) falso
+ c) verdadeiro
+ d) verdadeiro
+18- 
+19- lim n->infinito: 2^n/3^n
+    a1 < a2 -> a1^n pertence a O(a2^n)
+    a1 = a2 -> a1^n pertence a theta(a2^n)
+    a1 > a2 -> a1^n pertence a omega(a2^n) 
+20- 
+    algoritmo 1:
+    a) n vezes ou O(n)
+    b) linear
+    c)
+algoritmo 2:
+    a) somatorio 2 de 1=1 até n-1 = 2(n-1) = theta(n-1)
+    c) se o primeiro if executa nao é necessario executar o segundo, pode-se usar um else
+	
