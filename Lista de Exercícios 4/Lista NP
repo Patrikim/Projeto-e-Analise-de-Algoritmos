@@ -1,4 +1,5 @@
 1- Um algoritmo é dito ser de tempo polinomial se seu tempo de execução é limitado superiormente por uma expressão polinomial no tamanho da entrada do algoritmo, 
+Classe de problemas de decisão que podem ser resolvidos em tempo polinomial por algoritmos deterministicos (prova-se costruindo um algoritmo pra ele).
 i.e., T(n) = O(nk) para uma constante k.
 2- Um problema cujo dado numero grande de instâncias ele pode ser resolvido em tempo hábil, e com recursos normais.
 3- Problemas cujo nao existe algoritmos eficientes, sendo assim pra grandes instancias ele demora muito tempo ou consome muito recurso.
@@ -14,4 +15,13 @@ i.e., T(n) = O(nk) para uma constante k.
 12- Por que se houver solução em tempo polinomial para problemas np esses problemas passariam a ser tratáveis.
 16- Não
 17- A
-18
+18- 1- Provar que IS é NP (Achar algoritmo que verifica dada solução em tempo polinomial)
+    2- 
+
+
+
+NP-completo - Qualquer problema np é polinomialmente redutivel para um np-completo.
+Polinomialmente redutível:
+Um problema de decisão d1 é dito polinomialmente redutivel a d2 se existe uma função T que transforma instâncias de d1 em instancias de d2, de forma que: 
+1- t mapeia todas as instancias sim de d1 em instancias sim de d2 e todas instancias não de d1 em instancias nao de d2
+2- t é computável em tempo polinomial
